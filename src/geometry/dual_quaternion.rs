@@ -78,7 +78,7 @@ impl<N: Real> Copy for DualQuaternion<N> {}
 impl<N: Real> Clone for DualQuaternion<N> {
     #[inline]
     fn clone(&self) -> Self {
-        DualQuaternion::from(self.re.clone(), self.du.clone())
+        Self{ re: self.re.clone(), du: self.du.clone()}
     }
 }
 
@@ -104,7 +104,7 @@ impl<N: Real> Clone for DualQuaternion<N> {
 //     }
 // }
 
-// impl<N: Real> DualQuaternion<N> {
+ impl<N: Real> DualQuaternion<N> {
 //     /// Moves this unit quaternion into one that owns its data.
 //     #[inline]
 //     #[deprecated(note = "This method is a no-op and will be removed in a future release.")]
@@ -134,25 +134,19 @@ impl<N: Real> Clone for DualQuaternion<N> {
 //         DualQuaternion::from(self.coords.normalize())
 //     }
 
-//     /// The conjugate of this quaternion.
-//     ///
-//     /// # Example
-//     /// ```
-//     /// # use nalgebra::DualQuaternion;
-//     /// let q = DualQuaternion::new(1.0, 2.0, 3.0, 4.0);
-//     /// let conj = q.conjugate();
-//     /// assert!(conj.i == -2.0 && conj.j == -3.0 && conj.k == -4.0 && conj.w == 1.0);
-//     /// ```
-//     #[inline]
-//     pub fn conjugate(&self) -> DualQuaternion<N> {
-//         let v = Vector4::new(
-//             -self.coords[0],
-//             -self.coords[1],
-//             -self.coords[2],
-//             self.coords[3],
-//         );
-//         DualQuaternion::from(v)
-//     }
+     /// The conjugate of this quaternion.
+     ///
+     /// # Example
+     /// ```
+     /// # use nalgebra::DualQuaternion;
+     /// let q = DualQuaternion::new(1.0, 2.0, 3.0, 4.0);
+     /// let conj = q.conjugate();
+     /// assert!(conj.i == -2.0 && conj.j == -3.0 && conj.k == -4.0 && conj.w == 1.0);
+     /// ```
+     #[inline]
+     pub fn conjugate(&self) -> Self {
+        Self{re: self.re.conjugate(), du: self.du.conjugate() }
+     }
 
 //     /// Inverts this quaternion if it is not zero.
 //     ///
@@ -303,19 +297,19 @@ impl<N: Real> Clone for DualQuaternion<N> {
 //         self.norm_squared()
 //     }
 
-//     /// The dot product of two quaternions.
-//     ///
-//     /// # Example
-//     /// ```
-//     /// # use nalgebra::DualQuaternion;
-//     /// let q1 = DualQuaternion::new(1.0, 2.0, 3.0, 4.0);
-//     /// let q2 = DualQuaternion::new(5.0, 6.0, 7.0, 8.0);
-//     /// assert_eq!(q1.dot(&q2), 70.0);
-//     /// ```
-//     #[inline]
-//     pub fn dot(&self, rhs: &Self) -> N {
-//         self.coords.dot(&rhs.coords)
-//     }
+     /// The dot product of two quaternions.
+     ///
+     /// # Example
+     /// ```
+     /// # use nalgebra::DualQuaternion;
+     /// let q1 = DualQuaternion::new(1.0, 2.0, 3.0, 4.0);
+     /// let q2 = DualQuaternion::new(5.0, 6.0, 7.0, 8.0);
+     /// assert_eq!(q1.dot(&q2), 70.0);
+     /// ```
+     #[inline]
+     pub fn dot(&self, rhs: &Self) -> N {
+         self.re.dot(&rhs.re)
+     }
 
 //     /// The polar decomposition of this quaternion.
 //     ///
@@ -516,7 +510,7 @@ impl<N: Real> Clone for DualQuaternion<N> {
 //     pub fn normalize_mut(&mut self) -> N {
 //         self.coords.normalize_mut()
 //     }
-// }
+ }
 
 // impl<N: Real + AbsDiffEq<Epsilon = N>> AbsDiffEq for DualQuaternion<N> {
 //     type Epsilon = N;
