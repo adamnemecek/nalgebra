@@ -1,6 +1,6 @@
 [package]
 name    = "nalgebra"
-version = "0.17.0"
+version = "0.17.2"
 authors = [ "Sébastien Crozet <developer@crozet.re>" ]
 
 description = "Linear algebra library with transformations and statically-sized or dynamically-sized matrices."
@@ -11,6 +11,8 @@ readme = "README.md"
 categories = [ "science" ]
 keywords = [ "linear", "algebra", "matrix", "vector", "math" ]
 license = "BSD-3-Clause"
+
+exclude = ["/ci/*", "/.travis.yml", "/Makefile"]
 
 [lib]
 name = "nalgebra"

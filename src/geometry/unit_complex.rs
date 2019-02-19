@@ -108,7 +108,7 @@ impl<N: Real> UnitComplex<N> {
     /// ```
     #[inline]
     pub fn conjugate(&self) -> Self {
-        UnitComplex::new_unchecked(self.conj())
+        Self::new_unchecked(self.conj())
     }
 
     /// Inverts this complex number if it is not zero.
@@ -302,19 +302,5 @@ impl<N: Real> UlpsEq for UnitComplex<N> {
     fn ulps_eq(&self, other: &Self, epsilon: Self::Epsilon, max_ulps: u32) -> bool {
         self.re.ulps_eq(&other.re, epsilon, max_ulps)
             && self.im.ulps_eq(&other.im, epsilon, max_ulps)
-    }
-}
-
-impl<N: Real> From<UnitComplex<N>> for Matrix3<N> {
-    #[inline]
-    fn from(q: UnitComplex<N>) -> Matrix3<N> {
-        q.to_homogeneous()
-    }
-}
-
-impl<N: Real> From<UnitComplex<N>> for Matrix2<N> {
-    #[inline]
-    fn from(q: UnitComplex<N>) -> Matrix2<N> {
-        q.to_rotation_matrix().into_inner()
     }
 }
