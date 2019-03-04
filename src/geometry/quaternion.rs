@@ -507,6 +507,30 @@ impl<N: Real> Quaternion<N> {
         self.coords.normalize_mut()
     }
 
+    /// Calculates the wedge product
+    #[inline]
+    pub fn wedge(&self, other: &Self) -> Self {
+        (self * other - other * self).half()
+    }
+
+    /// Calculates the antiwedge product
+    #[inline]
+    pub fn antiwedge(&self, other: &Self) -> Self {
+        (self * other + other * self).half()
+    }
+
+    /// Calculates the parallel bisector
+    #[inline]
+    pub fn para(&self, other: &Self) -> Self {
+        (self - other * self * other).half()
+    }
+
+    /// Calculates the perpendicular bisector
+    #[inline]
+    pub fn perp(&self, other: &Self) -> Self {
+        (self + other * self * other).half()
+    }
+
     /// Calculates square of a quaternion.
     #[inline]
     pub fn squared(&self) -> Self {
@@ -1322,4 +1346,3 @@ impl<N: Real + UlpsEq<Epsilon = N>> UlpsEq for UnitQuaternion<N> {
         self.as_ref().ulps_eq(other.as_ref(), epsilon, max_ulps)
     }
 }
-
