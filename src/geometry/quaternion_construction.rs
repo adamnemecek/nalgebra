@@ -44,6 +44,12 @@ impl<N: Real> Quaternion<N> {
         Self::from(Vector4::new(i, j, k, w))
     }
 
+    /// Constructs a real quaternion.
+    #[inline]
+    pub fn from_real(r: N) -> Self {
+        Self::from_parts(r, Vector3::zero())
+    }
+
     /// Constructs a pure quaternion.
     #[inline]
     pub fn from_imag(vector: Vector3<N>) -> Self {
@@ -95,7 +101,7 @@ impl<N: Real> Quaternion<N> {
     /// ```
     #[inline]
     pub fn identity() -> Self {
-        Self::from_parts(N::one(), Vector3::zero())
+        Self::from_real(N::one())
     }
 }
 
