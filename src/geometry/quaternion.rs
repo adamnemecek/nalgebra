@@ -319,16 +319,16 @@ impl<N: Real> Quaternion<N> {
         (self * other - other * self).half()
     }
 
-    #[inline]
-    pub fn wedge2(&self, other: &Self) -> Self {
-        	// return Quat(0.0f,
-	        //     this->y*rhs.z - this->z*rhs.y,
-	        //     this->z*rhs.x - this->x*rhs.z,
-	        //     this->x*rhs.y - this->y*rhs.x);
-        // (self * other - other * self).half()
-        self.
-        Quaternion::from_imag(Vector3::new())
-    }
+    // #[inline]
+    // pub fn wedge2(&self, other: &Self) -> Self {
+    //     	// return Quat(0.0f,
+	//         //     this->y*rhs.z - this->z*rhs.y,
+	//         //     this->z*rhs.x - this->x*rhs.z,
+	//         //     this->x*rhs.y - this->y*rhs.x);
+    //     // (self * other - other * self).half()
+    //     // self.
+    //     Quaternion::from_imag(Vector3::new())
+    // }
 
     /// Calculates the prjection bisector
     ///
@@ -1175,11 +1175,7 @@ impl<N: Real> UnitQuaternion<N> {
     /// ```
     #[inline]
     pub fn axis_angle(&self) -> Option<(Unit<Vector3<N>>, N)> {
-        if let Some(axis) = self.axis() {
-            Some((axis, self.angle()))
-        } else {
-            None
-        }
+        self.axis().map(|axis| (axis, self.angle()))
     }
 
     /// Compute the exponential of a quaternion.
