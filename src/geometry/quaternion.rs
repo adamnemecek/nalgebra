@@ -561,6 +561,18 @@ impl<N: Real> Quaternion<N> {
         Self::from_imag(self.imag())
     }
 
+    /// Left quaternionic division.
+    #[inline]
+    pub fn left_div(&self, other: &Self) -> Option<Self> {
+        other.try_inverse().map(|inv| self * inv)
+    }
+
+    /// Right quaternionic division.
+    #[inline]
+    pub fn right_div(&self, other: &Self) -> Option<Self> {
+        other.try_inverse().map(|inv| inv * self)
+    }
+
     /// Calculates the quaternionic cosinus.
     ///
     /// # Example
