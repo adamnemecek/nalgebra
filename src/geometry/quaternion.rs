@@ -307,6 +307,62 @@ impl<N: Real> Quaternion<N> {
         self.coords.dot(&rhs.coords)
     }
 
+    /// Calculates the dot product
+    #[inline]
+    pub fn inner(&self, other: &Self) -> Self {
+        (self * other + other * self).half()
+    }
+
+    /// Calculates the wedge product
+    #[inline]
+    pub fn wedge(&self, other: &Self) -> Self {
+        (self * other - other * self).half()
+    }
+
+    #[inline]
+    pub fn wedge2(&self, other: &Self) -> Self {
+        	// return Quat(0.0f,
+	        //     this->y*rhs.z - this->z*rhs.y,
+	        //     this->z*rhs.x - this->x*rhs.z,
+	        //     this->x*rhs.y - this->y*rhs.x);
+        // (self * other - other * self).half()
+        self.
+        Quaternion::from_imag(Vector3::new())
+    }
+
+    /// Calculates the prjection bisector
+    ///
+    /// # Example
+    /// ```
+    /// # #[macro_use] extern crate approx;
+    /// # use nalgebra::Quaternion;
+    /// let a = Quaternion::new(0.0, 2.0, 3.0, 4.0);
+    /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
+    /// let result = Quaternion::new(0.0, -0.2408, 0.8427, -0.4815);
+    /// assert_relative_eq!(a.proj(b), result);
+    /// ```
+    #[inline]
+    pub fn proj(&self, other: &Self) -> Self {
+        self.inner(other).left_div(other).unwrap()
+    }
+
+    /// Calculates the perpendicular bisector
+    #[inline]
+    pub fn rej(&self, other: &Self) -> Self {
+        self.wedge(other).left_div(other).unwrap()
+    }
+
+    // #[inline]
+    // pub fn para(&self, other: &Self) -> Self {
+    //     (self - other.try_inverse().unwrap() * self * other).half()
+    // }
+
+    // /// Calculates the perpendicular bisector
+    // #[inline]
+    // pub fn perp(&self, other: &Self) -> Self {
+    //     (self + other.try_inverse().unwrap() * self * other).half()
+    // }
+
     /// The polar decomposition of this quaternion.
     ///
     /// Returns, from left to right: the quaternion norm, the half rotation angle, the rotation
@@ -507,30 +563,6 @@ impl<N: Real> Quaternion<N> {
         self.coords.normalize_mut()
     }
 
-    /// Calculates the wedge product
-    #[inline]
-    pub fn wedge(&self, other: &Self) -> Self {
-        (self * other - other * self).half()
-    }
-
-    /// Calculates the antiwedge product
-    #[inline]
-    pub fn antiwedge(&self, other: &Self) -> Self {
-        (self * other + other * self).half()
-    }
-
-    /// Calculates the parallel bisector
-    #[inline]
-    pub fn para(&self, other: &Self) -> Self {
-        (self - other * self * other).half()
-    }
-
-    /// Calculates the perpendicular bisector
-    #[inline]
-    pub fn perp(&self, other: &Self) -> Self {
-        (self + other * self * other).half()
-    }
-
     /// Calculates square of a quaternion.
     #[inline]
     pub fn squared(&self) -> Self {
@@ -561,7 +593,18 @@ impl<N: Real> Quaternion<N> {
         Self::from_imag(self.imag())
     }
 
-    /// Left quaternionic division.
+    /// Calculate left quaternionic division.
+    ///
+    /// # Example
+    /// ```
+    /// # #[macro_use] extern crate approx;
+    /// # use nalgebra::Quaternion;
+    /// let a = Quaternion::new(0.0, 1.0, 2.0, 3.0);
+    /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
+    /// let result = a.left_div(&b);
+    /// let expected = Quaternion::new(0.4, 0.13333333333333336, -0.4666666666666667, 0.26666666666666666);
+    /// assert_relative_eq!(expected, result, epsilon = 1.0e-7);
+    /// ```
     #[inline]
     pub fn left_div(&self, other: &Self) -> Option<Self> {
         other.try_inverse().map(|inv| self * inv)
