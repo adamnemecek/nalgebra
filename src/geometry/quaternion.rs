@@ -307,34 +307,15 @@ impl<N: Real> Quaternion<N> {
         self.coords.dot(&rhs.coords)
     }
 
-    /// Calculates the dot product
+    /// Calculates the inner product
+    /// The following 
+    /// 
     #[inline]
     pub fn inner(&self, other: &Self) -> Self {
         (self * other + other * self).half()
     }
 
     /// Calculates the wedge product
-    #[inline]
-    pub fn wedge(&self, other: &Self) -> Self {
-        (self * other - other * self).half()
-    }
-
-    /// fsda
-    #[inline]
-    pub fn wedge2(&self, other: &Self) -> Self {
-        Quaternion::from_imag(self.imag().cross(&other.imag()))
-        // 	// return Quat(0.0f,
-	    //     //     this->y*rhs.z - this->z*rhs.y,
-	    //     //     this->z*rhs.x - this->x*rhs.z,
-	    //     //     this->x*rhs.y - this->y*rhs.x);
-        // // (self * other - other * self).half()
-        // let x = self.coords.x;
-        // let y = self.coords.y;
-        // // Quaternion::from_imag(Vector3::new())
-        // *self
-    }
-
-    /// Calculates the projection bisector
     ///
     /// # Example
     /// ```
@@ -342,15 +323,32 @@ impl<N: Real> Quaternion<N> {
     /// # use nalgebra::Quaternion;
     /// let a = Quaternion::new(0.0, 2.0, 3.0, 4.0);
     /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
+    /// let result = Quaternion::new(0.0, -4.0, 14.0, -8.0);
+    /// assert_relative_eq!(a.wedge(b), result);
+    /// ```
+    #[inline]
+    pub fn wedge(&self, other: &Self) -> Self {
+        (self * other - other * self).half()
+    }
+
+    /// Calculates the rejection of `self` from `other`.
+    ///
+    /// # Example
+    /// ```
+    /// # #[macro_use] extern crate approx;
+    /// # use nalgebra::Quaternion;
+    /// let a = Quaternion::new(0.0, 1.0, 2.0, 3.0);
+    /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
     /// let result = Quaternion::new(0.0, -0.2408, 0.8427, -0.4815);
-    /// assert_relative_eq!(a.proj(b), result);
+    /// assert_relative_eq!(a.proj(&b), result);
     /// ```
     #[inline]
     pub fn proj(&self, other: &Self) -> Self {
         self.inner(other).left_div(other).unwrap()
     }
 
-    /// Calculates the perpendicular bisector
+    /// Calculates the rejection of `self` from `other`.
+    /// See Lengyel
     #[inline]
     pub fn rej(&self, other: &Self) -> Self {
         self.wedge(other).left_div(other).unwrap()
