@@ -1272,6 +1272,8 @@ impl<N: Real> UnitQuaternion<N> {
 
     /// Rotate a point by this unit quaternion.
     ///
+    /// This is the same as the multiplication `self * pt`.
+    ///
     /// # Example
     ///
     /// ```
@@ -1289,6 +1291,8 @@ impl<N: Real> UnitQuaternion<N> {
     }
 
     /// Rotate a vector by this unit quaternion.
+    ///
+    /// This is the same as the multiplication `self * v`.
     ///
     /// # Example
     ///
