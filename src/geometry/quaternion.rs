@@ -319,18 +319,22 @@ impl<N: Real> Quaternion<N> {
         (self * other - other * self).half()
     }
 
-    // #[inline]
-    // pub fn wedge2(&self, other: &Self) -> Self {
-    //     	// return Quat(0.0f,
-	//         //     this->y*rhs.z - this->z*rhs.y,
-	//         //     this->z*rhs.x - this->x*rhs.z,
-	//         //     this->x*rhs.y - this->y*rhs.x);
-    //     // (self * other - other * self).half()
-    //     // self.
-    //     Quaternion::from_imag(Vector3::new())
-    // }
+    /// fsda
+    #[inline]
+    pub fn wedge2(&self, other: &Self) -> Self {
+        Quaternion::from_imag(self.imag().cross(&other.imag()))
+        // 	// return Quat(0.0f,
+	    //     //     this->y*rhs.z - this->z*rhs.y,
+	    //     //     this->z*rhs.x - this->x*rhs.z,
+	    //     //     this->x*rhs.y - this->y*rhs.x);
+        // // (self * other - other * self).half()
+        // let x = self.coords.x;
+        // let y = self.coords.y;
+        // // Quaternion::from_imag(Vector3::new())
+        // *self
+    }
 
-    /// Calculates the prjection bisector
+    /// Calculates the projection bisector
     ///
     /// # Example
     /// ```
