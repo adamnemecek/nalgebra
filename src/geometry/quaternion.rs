@@ -1090,10 +1090,9 @@ impl<N: Real> UnitQuaternion<N> {
     /// ```
     #[inline]
     pub fn scaled_axis(&self) -> Vector3<N> {
-        if let Some(axis) = self.axis() {
-            axis.into_inner() * self.angle()
-        } else {
-            Vector3::zero()
+        match &self.axis() {
+            Some(ref axis) => axis.into_inner() * self.angle(),
+            None => Vector3::zero()
         }
     }
 
