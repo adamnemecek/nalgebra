@@ -307,6 +307,60 @@ impl<N: Real> Quaternion<N> {
         self.coords.dot(&rhs.coords)
     }
 
+    /// Calculates the inner product (also known as the dot product).
+    /// See "Foundations of Game Engine Development, Volume 1: Mathematics"
+    /// Formula 4.89.
+    #[inline]
+    pub fn inner(&self, other: &Self) -> Self {
+        (self * other + other * self).half()
+    }
+
+    /// Calculates the outer product (also known as the wedge product).
+    /// See "Foundations of Game Engine Development, Volume 1: Mathematics"
+    /// Formula 4.94.
+    /// # Example
+    /// ```
+    /// # #[macro_use] extern crate approx;
+    /// # use nalgebra::Quaternion;
+    /// let a = Quaternion::new(0.0, 2.0, 3.0, 4.0);
+    /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
+    /// let result = Quaternion::new(0.0, -4.0, 14.0, -8.0);
+    /// assert_relative_eq!(a.outer(b), result, epsilon = 1.0e-7);
+    /// ```
+    #[inline]
+    pub fn outer(&self, other: &Self) -> Self {
+        (self * other - other * self).half()
+    }
+
+    /// Calculates the projection of `self` onto `other`.
+    /// Also known as parallel.
+    /// See "Foundations of Game Engine Development, Volume 1: Mathematics"
+    /// Formula 4.94.
+    /// # Example
+    /// ```
+    /// # #[macro_use] extern crate approx;
+    /// # use nalgebra::Quaternion;
+    /// let a = Quaternion::new(0.0, 1.0, 2.0, 3.0);
+    /// let b = Quaternion::new(0.0, 5.0, 2.0, 1.0);
+    /// let expected = Quaternion::new(0.0, -0.2408, 0.8427, -0.4815);
+    /// let result = a.project(&b);
+    /// assert_relative_eq!(expected, result, epsilon = 1.0e-7);
+    /// ```
+    #[inline]
+    pub fn project(&self, other: &Self) -> Option<Self> {
+        self.inner(other).right_div(other)
+    }
+
+    /// Calculates the rejection of `self` from `other`.
+    /// Also known as orthogonal.
+    /// See "Foundations of Game Engine Development, Volume 1: Mathematics"
+    /// Formula 4.94.
+    /// See Lengyel
+    #[inline]
+    pub fn reject(&self, other: &Self) -> Option<Self> {
+        self.outer(other).right_div(other)
+    }
+
     /// The polar decomposition of this quaternion.
     ///
     /// Returns, from left to right: the quaternion norm, the half rotation angle, the rotation
