@@ -1,23 +1,29 @@
-use approx::{AbsDiffEq, RelativeEq, UlpsEq};
-use std::fmt;
-use std::hash;
+use {
+    approx::{AbsDiffEq, RelativeEq, UlpsEq},
+    std::{fmt, hash},
+    alga::{
+        general::{RealField, SubsetOf},
+        linear::Rotation
+    },
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimName, DimNameAdd, DimNameSum, U1},
+            storage::Owned,
+            DefaultAllocator, MatrixN, VectorN
+        },
+        geometry::{Isometry, Point, Translation}
+    }
+};
+
 #[cfg(feature = "abomonation-serialize")]
-use std::io::{Result as IOResult, Write};
+use {
+    std::io::{Result as IOResult, Write},
+    abomonation::Abomonation
+};
 
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Serialize};
-
-#[cfg(feature = "abomonation-serialize")]
-use abomonation::Abomonation;
-
-use alga::general::{RealField, SubsetOf};
-use alga::linear::Rotation;
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
-use crate::base::storage::Owned;
-use crate::base::{DefaultAllocator, MatrixN, VectorN};
-use crate::geometry::{Isometry, Point, Translation};
 
 /// A similarity, i.e., an uniform scaling, followed by a rotation, followed by a translation.
 #[repr(C)]

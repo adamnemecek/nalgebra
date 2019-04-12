@@ -1,6 +1,8 @@
-use na::{DMatrix, Matrix4};
-use nl::Hessenberg;
-use test::{self, Bencher};
+use {
+    na::{DMatrix, Matrix4},
+    nl::Hessenberg,
+    test::{self, Bencher}
+};
 
 #[bench]
 fn hessenberg_decompose_100x100(bh: &mut Bencher) {

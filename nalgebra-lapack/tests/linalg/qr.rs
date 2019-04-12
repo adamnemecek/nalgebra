@@ -1,5 +1,7 @@
-use na::{DMatrix, Matrix4x3};
-use nl::QR;
+use {
+    na::{DMatrix, Matrix4x3},
+    nl::QR
+};
 
 quickcheck!{
     fn qr(m: DMatrix<f64>) -> bool {

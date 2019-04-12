@@ -1,10 +1,14 @@
-use alga::general::{RealField, SubsetOf};
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
-use crate::base::{DefaultAllocator, MatrixN};
-
-use crate::geometry::{SuperTCategoryOf, TCategory, Transform};
+use {
+    alga::general::{RealField, SubsetOf},
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimName, DimNameAdd, DimNameSum, U1},
+            DefaultAllocator, MatrixN,
+        },
+        geometry::{SuperTCategoryOf, TCategory, Transform}
+    }
+};
 
 impl<N1, N2, D: DimName, C1, C2> SubsetOf<Transform<N2, D, C2>> for Transform<N1, D, C1>
 where

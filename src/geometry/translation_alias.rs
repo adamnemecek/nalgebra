@@ -1,6 +1,7 @@
-use crate::base::dimension::{U1, U2, U3, U4, U5, U6};
-
-use crate::geometry::Translation;
+use crate::{
+    base::dimension::{U1, U2, U3, U4, U5, U6},
+    geometry::Translation
+};
 
 /// A 1-dimensional translation.
 pub type Translation1<N> = Translation<N, U1>;

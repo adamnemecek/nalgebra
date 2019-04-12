@@ -1,22 +1,29 @@
+use {
+    num::One,
+    rand::{Rng, distributions::{Distribution, Standard}},
+
+    alga::{
+        general::RealField,
+        linear::Rotation as AlgaRotation
+    },
+
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimName, U2, U3},
+            DefaultAllocator, Vector2, Vector3
+        },
+        geometry::{
+            Isometry, Point, Point3, Rotation2, Rotation3, Similarity, Translation, UnitComplex,
+            UnitQuaternion,
+        }
+    }
+};
+
 #[cfg(feature = "arbitrary")]
-use crate::base::storage::Owned;
-#[cfg(feature = "arbitrary")]
-use quickcheck::{Arbitrary, Gen};
-
-use num::One;
-use rand::distributions::{Distribution, Standard};
-use rand::Rng;
-
-use alga::general::RealField;
-use alga::linear::Rotation as AlgaRotation;
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, U2, U3};
-use crate::base::{DefaultAllocator, Vector2, Vector3};
-
-use crate::geometry::{
-    Isometry, Point, Point3, Rotation2, Rotation3, Similarity, Translation, UnitComplex,
-    UnitQuaternion,
+use {
+    crate::base::storage::Owned,
+    quickcheck::{Arbitrary, Gen}
 };
 
 impl<N: RealField, D: DimName, R> Similarity<N, D, R>

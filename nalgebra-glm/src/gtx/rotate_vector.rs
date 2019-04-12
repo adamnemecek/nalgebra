@@ -1,6 +1,7 @@
-use na::{RealField, Rotation3, Unit, UnitComplex};
-
-use crate::aliases::{TMat4, TVec2, TVec3, TVec4};
+use {
+    na::{RealField, Rotation3, Unit, UnitComplex},
+    crate::aliases::{TMat4, TVec2, TVec3, TVec4}
+};
 
 /// Build the rotation matrix needed to align `normal` and `up`.
 pub fn orientation<N: RealField>(normal: &TVec3<N>, up: &TVec3<N>) -> TMat4<N> {

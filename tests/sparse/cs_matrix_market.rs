@@ -1,8 +1,7 @@
 #![cfg_attr(rustfmt, rustfmt_skip)]
 
 
-use na::io;
-use na::DMatrix;
+use na::{DMatrix, io};
 
 #[test]
 fn cs_matrix_market() {

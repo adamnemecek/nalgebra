@@ -1,6 +1,5 @@
 #![macro_use]
 
-
 // FIXME: merge with `md_impl`.
 /// Macro for the implementation of multiplication and division.
 macro_rules! md_impl(

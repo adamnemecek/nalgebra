@@ -1,7 +1,9 @@
-use na::{DVector, Vector2, Vector3, Vector4, VectorN};
-use rand::{IsaacRng, Rng};
-use std::ops::{Add, Div, Mul, Sub};
-use typenum::U10000;
+use {
+    na::{DVector, Vector2, Vector3, Vector4, VectorN},
+    rand::{IsaacRng, Rng},
+    std::ops::{Add, Div, Mul, Sub},
+    typenum::U10000
+};
 
 #[path = "../common/macros.rs"]
 mod macros;
@@ -54,7 +56,10 @@ fn vec10000_axpy_f64(bh: &mut criterion::Criterion) {
     let b = DVector::new_random(10000);
     let n = rng.gen::<f64>();
 
-    bh.bench_function("vec10000_axpy_f64", move |bh| bh.iter(|| a.axpy(n, &b, 1.0)));
+    bh.bench_function(
+        "vec10000_axpy_f64",
+        move |bh| bh.iter(|| a.axpy(n, &b, 1.0)),
+    );
 }
 
 fn vec10000_axpy_beta_f64(bh: &mut criterion::Criterion) {
@@ -65,7 +70,9 @@ fn vec10000_axpy_beta_f64(bh: &mut criterion::Criterion) {
     let n = rng.gen::<f64>();
     let beta = rng.gen::<f64>();
 
-    bh.bench_function("vec10000_axpy_beta_f64", move |bh| bh.iter(|| a.axpy(n, &b, beta)));
+    bh.bench_function("vec10000_axpy_beta_f64", move |bh| {
+        bh.iter(|| a.axpy(n, &b, beta))
+    });
 }
 
 fn vec10000_axpy_f64_slice(bh: &mut criterion::Criterion) {
@@ -75,12 +82,14 @@ fn vec10000_axpy_f64_slice(bh: &mut criterion::Criterion) {
     let b = DVector::new_random(10000);
     let n = rng.gen::<f64>();
 
-    bh.bench_function("vec10000_axpy_f64_slice", move |bh| bh.iter(|| {
-        let mut a = a.fixed_rows_mut::<U10000>(0);
-        let b = b.fixed_rows::<U10000>(0);
+    bh.bench_function("vec10000_axpy_f64_slice", move |bh| {
+        bh.iter(|| {
+            let mut a = a.fixed_rows_mut::<U10000>(0);
+            let b = b.fixed_rows::<U10000>(0);
 
-        a.axpy(n, &b, 1.0)
-    }));
+            a.axpy(n, &b, 1.0)
+        })
+    });
 }
 
 fn vec10000_axpy_f64_static(bh: &mut criterion::Criterion) {
@@ -91,7 +100,9 @@ fn vec10000_axpy_f64_static(bh: &mut criterion::Criterion) {
     let n = rng.gen::<f64>();
 
     // NOTE: for some reasons, it is much faster if the arument are boxed (Box::new(VectorN...)).
-    bh.bench_function("vec10000_axpy_f64_static", move |bh| bh.iter(|| a.axpy(n, &b, 1.0)));
+    bh.bench_function("vec10000_axpy_f64_static", move |bh| {
+        bh.iter(|| a.axpy(n, &b, 1.0))
+    });
 }
 
 fn vec10000_axpy_f32(bh: &mut criterion::Criterion) {
@@ -101,7 +112,10 @@ fn vec10000_axpy_f32(bh: &mut criterion::Criterion) {
     let b = DVector::new_random(10000);
     let n = rng.gen::<f32>();
 
-    bh.bench_function("vec10000_axpy_f32", move |bh| bh.iter(|| a.axpy(n, &b, 1.0)));
+    bh.bench_function(
+        "vec10000_axpy_f32",
+        move |bh| bh.iter(|| a.axpy(n, &b, 1.0)),
+    );
 }
 
 fn vec10000_axpy_beta_f32(bh: &mut criterion::Criterion) {
@@ -112,7 +126,9 @@ fn vec10000_axpy_beta_f32(bh: &mut criterion::Criterion) {
     let n = rng.gen::<f32>();
     let beta = rng.gen::<f32>();
 
-    bh.bench_function("vec10000_axpy_beta_f32", move |bh| bh.iter(|| a.axpy(n, &b, beta)));
+    bh.bench_function("vec10000_axpy_beta_f32", move |bh| {
+        bh.iter(|| a.axpy(n, &b, beta))
+    });
 }
 
 criterion_group!(vector,

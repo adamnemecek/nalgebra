@@ -1,7 +1,10 @@
-use crate::base::allocator::Allocator;
-use crate::base::{DefaultAllocator, DimName, Scalar};
-use crate::geometry::{Point, Point2, Point3};
-use typenum::{self, Cmp, Greater};
+use {
+    typenum::{self, Cmp, Greater},
+    crate::{
+        base::{allocator::Allocator, DefaultAllocator, DimName, Scalar},
+        geometry::{Point, Point2, Point3}
+    }
+};
 
 macro_rules! impl_swizzle {
     ($( where $BaseDim: ident: $( $name: ident() -> $Result: ident[$($i: expr),+] ),+ ;)* ) => {

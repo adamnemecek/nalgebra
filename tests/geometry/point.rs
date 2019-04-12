@@ -1,5 +1,7 @@
-use na::{Point3, Vector3, Vector4};
-use num::Zero;
+use {
+    na::{Point3, Vector3, Vector4},
+    num::Zero
+};
 
 #[test]
 fn point_clone() {

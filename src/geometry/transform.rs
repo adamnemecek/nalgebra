@@ -1,19 +1,25 @@
-use approx::{AbsDiffEq, RelativeEq, UlpsEq};
-use std::any::Any;
-use std::fmt::Debug;
-use std::marker::PhantomData;
+use {
+    approx::{AbsDiffEq, RelativeEq, UlpsEq},
+    std::{
+        any::Any,
+        fmt::Debug,
+        marker::PhantomData
+    },
+
+    alga::general::{RealField, TwoSidedInverse},
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimName, DimNameAdd, DimNameSum, U1},
+            storage::Owned,
+            DefaultAllocator, MatrixN, VectorN
+        },
+        geometry::Point
+    }
+};
 
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
-
-use alga::general::{RealField, TwoSidedInverse};
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
-use crate::base::storage::Owned;
-use crate::base::{DefaultAllocator, MatrixN, VectorN};
-
-use crate::geometry::Point;
 
 /// Trait implemented by phantom types identifying the projective transformation type.
 ///

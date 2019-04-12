@@ -6,10 +6,22 @@ use na::{Matrix4, Matrix4x3, Vector4};
 
 fn main() {
     let a = Matrix4::new(
-        1.0, 1.0,  2.0, -5.0,
-        2.0, 5.0, -1.0, -9.0,
-        2.0, 1.0, -1.0,  3.0,
-        1.0, 3.0,  2.0,  7.0,
+        1.0,
+        1.0,
+        2.0,
+        -5.0,
+        2.0,
+        5.0,
+        -1.0,
+        -9.0,
+        2.0,
+        1.0,
+        -1.0,
+        3.0,
+        1.0,
+        3.0,
+        2.0,
+        7.0,
     );
     let mut b = Vector4::new(3.0, -3.0, -11.0, -5.0);
     let decomp = a.lu();
@@ -29,10 +41,18 @@ fn main() {
      * simultaneously by using a matrix for `b`.
      */
     let b = Matrix4x3::new(
-         3.0,  2.0,  0.0,
-        -3.0,  0.0,  0.0,
-        -11.0, 5.0, -3.0,
-        -5.0,  10.0, 4.0,
+        3.0,
+        2.0,
+        0.0,
+        -3.0,
+        0.0,
+        0.0,
+        -11.0,
+        5.0,
+        -3.0,
+        -5.0,
+        10.0,
+        4.0,
     );
     let x = decomp.solve(&b).expect("Linear resolution failed.");
     assert_relative_eq!(a * x, b);

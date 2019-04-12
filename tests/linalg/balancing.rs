@@ -1,9 +1,9 @@
 #![cfg(feature = "arbitrary")]
 
-use std::cmp;
-
-use na::balancing;
-use na::{DMatrix, Matrix4};
+use {
+    std::cmp,
+    na::{balancing, DMatrix, Matrix4}
+};
 
 quickcheck! {
     fn balancing_parlett_reinsch(n: usize) -> bool {

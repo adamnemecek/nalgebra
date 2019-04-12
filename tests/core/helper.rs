@@ -1,11 +1,12 @@
 // This module implement several methods to fill some
 // missing features of num-complex when it comes to randomness.
 
-use quickcheck::{Arbitrary, Gen};
-use rand::distributions::{Standard, Distribution};
-use rand::Rng;
-use num_complex::Complex;
-use na::RealField;
+use {
+    quickcheck::{Arbitrary, Gen},
+    rand::{Rng, distributions::{Standard, Distribution}},
+    num_complex::Complex,
+    na::RealField
+};
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 pub struct RandComplex<N>(pub Complex<N>);

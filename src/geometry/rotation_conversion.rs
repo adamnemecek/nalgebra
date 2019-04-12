@@ -1,19 +1,24 @@
-use num::Zero;
-
-use alga::general::{RealField, SubsetOf, SupersetOf};
-use alga::linear::Rotation as AlgaRotation;
+use {
+    num::Zero,
+    alga::{
+        general::{RealField, SubsetOf, SupersetOf},
+        linear::Rotation as AlgaRotation
+    },
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimMin, DimName, DimNameAdd, DimNameSum, U1},
+            DefaultAllocator, Matrix2, Matrix3, Matrix4, MatrixN
+        },
+        geometry::{
+            Isometry, Point, Rotation, Rotation2, Rotation3, Similarity, SuperTCategoryOf, TAffine,
+            Transform, Translation, UnitComplex, UnitQuaternion,
+        }
+    }
+};
 
 #[cfg(feature = "mint")]
 use mint;
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimMin, DimName, DimNameAdd, DimNameSum, U1};
-use crate::base::{DefaultAllocator, Matrix2, Matrix3, Matrix4, MatrixN};
-
-use crate::geometry::{
-    Isometry, Point, Rotation, Rotation2, Rotation3, Similarity, SuperTCategoryOf, TAffine,
-    Transform, Translation, UnitComplex, UnitQuaternion,
-};
 
 /*
  * This file provides the following conversions:

@@ -1,15 +1,17 @@
+use {
+    num::Signed,
+    std::cmp,
+    na::{
+        allocator::Allocator,
+        dimension::{Dim, DimMin, DimMinimum, U1},
+        storage::Storage,
+        DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar, VectorN
+    },
+    lapack,
+};
+
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Serialize};
-
-use num::Signed;
-use std::cmp;
-
-use na::allocator::Allocator;
-use na::dimension::{Dim, DimMin, DimMinimum, U1};
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar, VectorN};
-
-use lapack;
 
 /// The SVD decomposition of a general matrix.
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]

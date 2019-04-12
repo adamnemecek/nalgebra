@@ -1,6 +1,7 @@
-use na::RealField;
-
-use crate::aliases::{TMat3, TMat4, TVec3};
+use {
+    na::RealField,
+    crate::aliases::{TMat3, TMat4, TVec3}
+};
 
 /// Builds a 3x3 matrix `m` such that for any `v`: `m * v == cross(x, v)`.
 ///

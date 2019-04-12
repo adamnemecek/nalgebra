@@ -1,18 +1,20 @@
+use {
+    num::Zero,
+    num_complex::Complex,
+    alga::general::RealField,
+    na::{
+        allocator::Allocator,
+        dimension::{Dim, U1},
+        storage::Storage,
+        DefaultAllocator, Matrix, MatrixN, Scalar, VectorN
+    },
+    crate::ComplexHelper,
+    lapack
+};
+
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Serialize};
 
-use num::Zero;
-use num_complex::Complex;
-
-use alga::general::RealField;
-
-use na::allocator::Allocator;
-use na::dimension::{Dim, U1};
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixN, Scalar, VectorN};
-use crate::ComplexHelper;
-
-use lapack;
 
 /// Eigendecomposition of a real square matrix with real eigenvalues.
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]

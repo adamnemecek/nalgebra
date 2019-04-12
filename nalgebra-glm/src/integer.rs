@@ -1,7 +1,10 @@
-use na::{Scalar, RealField, U3, DefaultAllocator};
-
-use crate::traits::{Number, Alloc, Dimension};
-use crate::aliases::TVec;
+use {
+    na::{Scalar, RealField, U3, DefaultAllocator},
+    crate::{
+        traits::{Number, Alloc, Dimension},
+        aliases::TVec
+    }
+};
 
 pub fn bitCount<T>(v: T) -> i32 {
     unimplemented!()

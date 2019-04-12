@@ -1,7 +1,10 @@
-use na::{DefaultAllocator, RealField};
-
-use crate::aliases::TVec;
-use crate::traits::{Alloc, Dimension};
+use {
+    na::{DefaultAllocator, RealField},
+    crate::{
+        aliases::TVec,
+        traits::{Alloc, Dimension}
+    }
+};
 
 /// The dot product of the normalized version of `x` and `y`.
 ///

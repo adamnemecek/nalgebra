@@ -1,6 +1,7 @@
-use na::{RealField, U4};
-
-use crate::aliases::{Qua, TVec};
+use {
+    na::{RealField, U4},
+    crate::aliases::{Qua, TVec}
+};
 
 /// Component-wise equality comparison between two quaternions.
 pub fn quat_equal<N: RealField>(x: &Qua<N>, y: &Qua<N>) -> TVec<bool, U4> {

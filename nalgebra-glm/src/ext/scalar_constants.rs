@@ -1,5 +1,7 @@
-use approx::AbsDiffEq;
-use na::RealField;
+use {
+    approx::AbsDiffEq,
+    na::RealField
+};
 
 /// Default epsilon value used for approximate comparison.
 pub fn epsilon<N: AbsDiffEq<Epsilon = N>>() -> N {

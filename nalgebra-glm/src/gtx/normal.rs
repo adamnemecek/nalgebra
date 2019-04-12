@@ -1,6 +1,7 @@
-use na::RealField;
-
-use crate::aliases::TVec3;
+use {
+    na::RealField,
+    crate::aliases::TVec3
+};
 
 /// The normal vector of the given triangle.
 ///

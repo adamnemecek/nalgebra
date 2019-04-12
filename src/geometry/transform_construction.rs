@@ -1,12 +1,15 @@
-use num::One;
-
-use alga::general::RealField;
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimNameAdd, DimNameSum, U1};
-use crate::base::{DefaultAllocator, MatrixN};
-
-use crate::geometry::{TCategory, Transform};
+use {
+    num::One,
+    alga::general::RealField,
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::{DimNameAdd, DimNameSum, U1},
+            DefaultAllocator, MatrixN
+        },
+        geometry::{TCategory, Transform}
+    }
+};
 
 impl<N: RealField, D: DimNameAdd<U1>, C: TCategory> Transform<N, D, C>
 where DefaultAllocator: Allocator<N, DimNameSum<D, U1>, DimNameSum<D, U1>>

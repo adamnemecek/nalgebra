@@ -1,7 +1,8 @@
-use std::cmp;
-
-use nl::Hessenberg;
-use na::{DMatrix, Matrix4};
+use {
+    std::cmp,
+    nl::Hessenberg,
+    na::{DMatrix, Matrix4}
+};
 
 quickcheck!{
     fn hessenberg(n: usize) -> bool {

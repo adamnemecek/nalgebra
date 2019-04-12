@@ -1,15 +1,19 @@
 extern crate alga;
 extern crate nalgebra as na;
 
-use alga::linear::Transformation;
-use na::{Id, Isometry3, Point3, Vector3};
+use {
+    alga::linear::Transformation,
+    na::{Id, Isometry3, Point3, Vector3}
+};
 
 /*
  * Applies `n` times the transformation `t` to the vector `v` and sum each
  * intermediate value.
  */
 fn complicated_algorithm<T>(v: &Vector3<f32>, t: &T, n: usize) -> Vector3<f32>
-where T: Transformation<Point3<f32>> {
+where
+    T: Transformation<Point3<f32>>,
+{
     let mut result = *v;
 
     // Do lots of operations involving t.

@@ -1,7 +1,10 @@
-use na::{DefaultAllocator, Scalar};
-
-use crate::aliases::{TMat, TVec};
-use crate::traits::{Alloc, Dimension};
+use {
+    na::{DefaultAllocator, Scalar},
+    crate::{
+        aliases::{TMat, TVec},
+        traits::{Alloc, Dimension}
+    }
+};
 
 /// The `index`-th column of the matrix `m`.
 ///

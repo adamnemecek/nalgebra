@@ -1,6 +1,8 @@
-use na::{DMatrix, Matrix4};
-use nl::QR;
-use test::{self, Bencher};
+use {
+    na::{DMatrix, Matrix4},
+    nl::QR,
+    test::{self, Bencher}
+};
 
 #[bench]
 fn qr_decompose_100x100(bh: &mut Bencher) {

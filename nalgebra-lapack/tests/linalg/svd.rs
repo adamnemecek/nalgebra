@@ -1,5 +1,7 @@
-use na::{DMatrix, Matrix3x4};
-use nl::SVD;
+use {
+    na::{DMatrix, Matrix3x4},
+    nl::SVD
+};
 
 quickcheck!{
     fn svd(m: DMatrix<f64>) -> bool {

@@ -1,7 +1,10 @@
-use na::{self, DefaultAllocator};
-
-use crate::aliases::TVec;
-use crate::traits::{Alloc, Dimension, Number};
+use {
+    na::{self, DefaultAllocator},
+    crate::{
+        aliases::TVec,
+        traits::{Alloc, Dimension, Number}
+    }
+};
 
 /// Component-wise maximum between a vector and a scalar.
 ///

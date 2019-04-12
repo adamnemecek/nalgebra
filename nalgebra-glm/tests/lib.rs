@@ -1,10 +1,10 @@
 extern crate nalgebra as na;
 extern crate nalgebra_glm as glm;
 
-use na::Perspective3;
-use na::Orthographic3;
-use glm::Mat4;
-use glm::Vec4;
+use {
+    na::{Perspective3, Orthographic3},
+    glm::{Mat4, Vec4}
+};
 
 #[test]
 pub fn orthographic_glm_nalgebra_same()

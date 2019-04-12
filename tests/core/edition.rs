@@ -1,11 +1,12 @@
 #![cfg_attr(rustfmt, rustfmt_skip)]
 
-use na::{Matrix,
-         DMatrix,
-         Matrix3, Matrix4, Matrix5,
-         Matrix4x3, Matrix3x4, Matrix5x3, Matrix3x5, Matrix4x5, Matrix5x4};
-use na::{Dynamic, U2, U3, U5};
-
+use {
+    Matrix,
+    DMatrix,
+    Matrix3, Matrix4, Matrix5,
+    Matrix4x3, Matrix3x4, Matrix5x3, Matrix3x5, Matrix4x5, Matrix5x4,
+    Dynamic, U2, U3, U5
+};
 
 #[test]
 fn upper_lower_triangular() {

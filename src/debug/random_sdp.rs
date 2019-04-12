@@ -1,15 +1,18 @@
-#[cfg(feature = "arbitrary")]
-use crate::base::storage::Owned;
-#[cfg(feature = "arbitrary")]
-use quickcheck::{Arbitrary, Gen};
+use {
+    alga::general::ComplexField,
+    crate::{
+        base::{Scalar, DefaultAllocator, MatrixN}
+        allocator::Allocator,
+        dimension::{Dim, Dynamic},
+        debug::RandomOrthogonal
+    }
+};
 
-use alga::general::ComplexField;
-use crate::base::Scalar;
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{Dim, Dynamic};
-use crate::base::{DefaultAllocator, MatrixN};
-
-use crate::debug::RandomOrthogonal;
+#[cfg(feature = "arbitrary")]
+use {
+    crate::base::storage::Owned,
+    quickcheck::{Arbitrary, Gen}
+};
 
 /// A random, well-conditioned, symmetric definite-positive matrix.
 #[derive(Clone, Debug)]
@@ -39,7 +42,7 @@ where DefaultAllocator: Allocator<N, D, D>
             col *= eigenval;
         }
 
-        RandomSDP { m: m * mt }
+        Self { m: m * mt }
     }
 }
 

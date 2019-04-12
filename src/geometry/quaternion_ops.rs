@@ -50,18 +50,21 @@
  *
  */
 
-use std::ops::{
-    Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
+use {
+    std::ops::{
+        Add, AddAssign, Div, DivAssign, Index, IndexMut, Mul, MulAssign, Neg, Sub, SubAssign,
+    },
+    alga::general::RealField,
+    crate::{
+        base::{
+            allocator::Allocator, 
+            dimension::{U1, U3, U4},
+            storage::Storage,
+            DefaultAllocator, Unit, Vector, Vector3
+        },
+        geometry::{Point3, Quaternion, Rotation, UnitQuaternion}
+    }
 };
-
-use alga::general::RealField;
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::{U1, U3, U4};
-use crate::base::storage::Storage;
-use crate::base::{DefaultAllocator, Unit, Vector, Vector3};
-
-use crate::geometry::{Point3, Quaternion, Rotation, UnitQuaternion};
 
 impl<N: RealField> Index<usize> for Quaternion<N> {
     type Output = N;

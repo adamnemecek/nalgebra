@@ -1,7 +1,10 @@
-use na::{self, DefaultAllocator};
-
-use crate::aliases::TMat;
-use crate::traits::{Alloc, Dimension, Number};
+use {
+    na::{self, DefaultAllocator},
+    crate::{
+        aliases::TMat,
+        traits::{Alloc, Dimension, Number}
+    }
+};
 
 /// The sum of every component of the given matrix or vector.
 ///

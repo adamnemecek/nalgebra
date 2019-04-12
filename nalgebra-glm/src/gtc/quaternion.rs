@@ -1,6 +1,7 @@
-use na::{RealField, UnitQuaternion, U4};
-
-use crate::aliases::{Qua, TMat4, TVec, TVec3};
+use {
+    na::{RealField, UnitQuaternion, U4},
+    crate::aliases::{Qua, TMat4, TVec, TVec3}
+};
 
 /// Euler angles of the quaternion `q` as (pitch, yaw, roll).
 pub fn quat_euler_angles<N: RealField>(x: &Qua<N>) -> TVec3<N> {

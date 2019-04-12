@@ -1,13 +1,16 @@
-use num::{One, Zero};
-use num_complex::Complex;
+use {
+    num::{One, Zero},
+    num_complex::Complex,
 
-use na::allocator::Allocator;
-use na::dimension::{Dim, DimMin, DimMinimum, U1};
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar, VectorN};
-use crate::ComplexHelper;
-
-use lapack;
+    na::{
+        allocator::Allocator,
+        dimension::{Dim, DimMin, DimMinimum, U1},
+        storage::Storage,
+        DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar, VectorN
+    },
+    crate::ComplexHelper,
+    lapack
+};
 
 /// LU decomposition with partial pivoting.
 ///

@@ -1,6 +1,7 @@
-use na::{RealField, Unit, UnitQuaternion};
-
-use crate::aliases::{Qua, TVec3};
+use {
+    na::{RealField, Unit, UnitQuaternion},
+    crate::aliases::{Qua, TVec3}
+};
 
 /// Computes the quaternion exponential.
 pub fn quat_exp<N: RealField>(q: &Qua<N>) -> Qua<N> {

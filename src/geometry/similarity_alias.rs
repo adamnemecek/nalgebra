@@ -1,6 +1,7 @@
-use crate::base::dimension::{U2, U3};
-
-use crate::geometry::{Rotation2, Rotation3, Similarity, UnitComplex, UnitQuaternion};
+use crate::{
+    base::dimension::{U2, U3},
+    geometry::{Rotation2, Rotation3, Similarity, UnitComplex, UnitQuaternion}
+};
 
 /// A 2-dimensional similarity.
 pub type Similarity2<N> = Similarity<N, U2, UnitComplex<N>>;

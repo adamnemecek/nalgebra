@@ -1,16 +1,21 @@
+use {
+    num::Zero,
+    num_complex::Complex,
+
+    na::{
+        allocator::Allocator,
+        dimension::{Dim, DimMin, DimMinimum, U1},
+        storage::Storage,
+        DefaultAllocator, Matrix, MatrixMN, Scalar, VectorN
+    },
+    crate::ComplexHelper,
+
+    lapack,
+};
+
+
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Serialize};
-
-use num::Zero;
-use num_complex::Complex;
-
-use na::allocator::Allocator;
-use na::dimension::{Dim, DimMin, DimMinimum, U1};
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixMN, Scalar, VectorN};
-use crate::ComplexHelper;
-
-use lapack;
 
 /// The QR decomposition of a general matrix.
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]

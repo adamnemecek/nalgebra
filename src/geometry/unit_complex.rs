@@ -1,10 +1,13 @@
-use approx::{AbsDiffEq, RelativeEq, UlpsEq};
-use num_complex::Complex;
-use std::fmt;
-
-use alga::general::RealField;
-use crate::base::{Matrix2, Matrix3, Unit, Vector1, Vector2};
-use crate::geometry::{Rotation2, Point2};
+use {
+    approx::{AbsDiffEq, RelativeEq, UlpsEq},
+    num_complex::Complex,
+    std::fmt,
+    alga::general::RealField,
+    crate::{
+        base::{Matrix2, Matrix3, Unit, Vector1, Vector2},
+        geometry::{Rotation2, Point2}
+    }
+};
 
 /// A complex number with a norm equal to 1.
 pub type UnitComplex<N> = Unit<Complex<N>>;

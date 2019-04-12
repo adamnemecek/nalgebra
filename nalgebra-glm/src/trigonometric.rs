@@ -1,7 +1,10 @@
-use na::{self, DefaultAllocator, RealField};
-
-use crate::aliases::TVec;
-use crate::traits::{Alloc, Dimension};
+use {
+    na::{self, DefaultAllocator, RealField},
+    crate::{
+        aliases::TVec,
+        traits::{Alloc, Dimension}
+    }
+};
 
 /// Component-wise arc-cosinus.
 pub fn acos<N: RealField, D: Dimension>(x: &TVec<N, D>) -> TVec<N, D>

@@ -6,16 +6,20 @@ fn main() {
     // All the following matrices are equal but constructed in different ways.
     let m = Matrix2x3::new(1.1, 1.2, 1.3, 2.1, 2.2, 2.3);
 
-    let m1 = Matrix2x3::from_rows(&[
-        RowVector3::new(1.1, 1.2, 1.3),
-        RowVector3::new(2.1, 2.2, 2.3),
-    ]);
+    let m1 = Matrix2x3::from_rows(
+        &[
+            RowVector3::new(1.1, 1.2, 1.3),
+            RowVector3::new(2.1, 2.2, 2.3),
+        ],
+    );
 
-    let m2 = Matrix2x3::from_columns(&[
-        Vector2::new(1.1, 2.1),
-        Vector2::new(1.2, 2.2),
-        Vector2::new(1.3, 2.3),
-    ]);
+    let m2 = Matrix2x3::from_columns(
+        &[
+            Vector2::new(1.1, 2.1),
+            Vector2::new(1.2, 2.2),
+            Vector2::new(1.3, 2.3),
+        ],
+    );
 
     let m3 = Matrix2x3::from_row_slice(&[1.1, 1.2, 1.3, 2.1, 2.2, 2.3]);
 
@@ -49,10 +53,20 @@ fn main() {
         3,
         [
             // Components listed column-by-column.
-            1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
-        ]
-        .iter()
-        .cloned(),
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+        ].iter()
+            .cloned(),
     );
 
     assert_eq!(dm, dm1);

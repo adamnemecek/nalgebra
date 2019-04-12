@@ -1,7 +1,9 @@
-use std::cmp;
+use {
+    std::cmp,
+    na::{DMatrix, Matrix4}
+    nl::SymmetricEigen
+};
 
-use na::{DMatrix, Matrix4};
-use nl::SymmetricEigen;
 
 quickcheck!{
     fn symmetric_eigen(n: usize) -> bool {

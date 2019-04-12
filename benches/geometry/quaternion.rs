@@ -1,6 +1,8 @@
-use na::{Quaternion, UnitQuaternion, Vector3};
-use rand::{IsaacRng, Rng};
-use std::ops::{Add, Div, Mul, Sub};
+use {
+    na::{Quaternion, UnitQuaternion, Vector3},
+    rand::{IsaacRng, Rng},
+    std::ops::{Add, Div, Mul, Sub}
+};
 
 #[path = "../common/macros.rs"]
 mod macros;

@@ -1,5 +1,7 @@
-use crate::aliases::TMat4;
-use na::{RealField};
+use {
+    crate::aliases::TMat4,
+    na::{RealField}
+};
 
 //pub fn frustum<N: RealField>(left: N, right: N, bottom: N, top: N, near: N, far: N) -> TMat4<N> {
 //    unimplemented!()

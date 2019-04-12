@@ -1,8 +1,10 @@
-use na::{Scalar, RealField, DefaultAllocator, U3, U4};
-
-use crate::traits::{Alloc, Dimension};
-use crate::aliases::*;
-
+use {
+    na::{Scalar, RealField, DefaultAllocator, U3, U4},
+    crate::{
+        aliases::*,
+        traits::{Alloc, Dimension}
+    }
+};
 
 pub fn packF2x11_1x10(v: &Vec3) -> i32 {
     unimplemented!()

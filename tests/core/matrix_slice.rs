@@ -1,16 +1,19 @@
 #![allow(non_snake_case)]
 #![cfg_attr(rustfmt, rustfmt_skip)]
 
-use na::{U2, U3, U4};
-use na::{DMatrix,
-         RowVector4,
-         Vector3,
-         Matrix2, Matrix3,
-         Matrix2x3, Matrix3x2, Matrix3x4, Matrix4x2, Matrix2x4, Matrix6x2, Matrix2x6,
-         MatrixSlice2, MatrixSlice3, MatrixSlice2x3, MatrixSlice3x2,
-         MatrixSliceXx3, MatrixSlice2xX, DMatrixSlice,
-         MatrixSliceMut2, MatrixSliceMut3, MatrixSliceMut2x3, MatrixSliceMut3x2,
-         MatrixSliceMutXx3, MatrixSliceMut2xX, DMatrixSliceMut};
+use na::{
+    U2, U3, U4,
+    DMatrix,
+    RowVector4,
+    Vector3,
+    Matrix2, Matrix3,
+    Matrix2x3, Matrix3x2, Matrix3x4, Matrix4x2, Matrix2x4, Matrix6x2, Matrix2x6,
+    MatrixSlice2, MatrixSlice3, MatrixSlice2x3, MatrixSlice3x2,
+    MatrixSliceXx3, MatrixSlice2xX, DMatrixSlice,
+    MatrixSliceMut2, MatrixSliceMut3, MatrixSliceMut2x3, MatrixSliceMut3x2,
+    MatrixSliceMutXx3, MatrixSliceMut2xX, DMatrixSliceMut
+};
+
 
 #[test]
 fn nested_fixed_slices() {

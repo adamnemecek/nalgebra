@@ -1,12 +1,14 @@
 #![cfg(feature = "serde-serialize")]
 
-use na::{
-    DMatrix, Isometry3, IsometryMatrix3, Matrix3x4, Point3, Quaternion, Rotation3, Similarity3,
-    SimilarityMatrix3, Translation3, Unit, Point2, Translation2, Rotation2, Isometry2, IsometryMatrix2,
-    Similarity2, SimilarityMatrix2,
+use {
+    na::{
+        DMatrix, Isometry3, IsometryMatrix3, Matrix3x4, Point3, Quaternion, Rotation3, Similarity3,
+        SimilarityMatrix3, Translation3, Unit, Point2, Translation2, Rotation2, Isometry2, IsometryMatrix2,
+        Similarity2, SimilarityMatrix2
+    },
+    rand,
+    serde_json
 };
-use rand;
-use serde_json;
 
 macro_rules! test_serde(
     ($($test: ident, $ty: ident);* $(;)*) => {$(

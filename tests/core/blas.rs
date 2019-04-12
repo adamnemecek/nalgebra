@@ -1,7 +1,9 @@
 #![cfg(feature = "arbitrary")]
 
-use na::{DMatrix, DVector};
-use std::cmp;
+use {
+    na::{DMatrix, DVector},
+    std::cmp
+};
 
 quickcheck! {
     /*

@@ -1,9 +1,13 @@
-use approx::AbsDiffEq;
-use num::{Bounded, FromPrimitive, Signed};
+use {
+    approx::AbsDiffEq,
+    num::{Bounded, FromPrimitive, Signed},
 
-use alga::general::{Lattice, Ring};
-use na::allocator::Allocator;
-use na::{DimMin, DimName, Scalar, U1};
+    alga::general::{Lattice, Ring},
+    na::{
+        allocator::Allocator,
+        DimMin, DimName, Scalar, U1
+    }
+};
 
 /// A type-level number representing a vector, matrix row, or matrix column, dimension.
 pub trait Dimension: DimName + DimMin<Self, Output = Self> {}

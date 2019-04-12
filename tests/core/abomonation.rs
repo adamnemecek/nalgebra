@@ -1,9 +1,11 @@
-use abomonation::{decode, encode, Abomonation};
-use na::{
-    DMatrix, Isometry3, IsometryMatrix3, Matrix3x4, Point3, Quaternion, Rotation3, Similarity3,
-    SimilarityMatrix3, Translation3,
+use {
+    abomonation::{decode, encode, Abomonation},
+    na::{
+        DMatrix, Isometry3, IsometryMatrix3, Matrix3x4, Point3, Quaternion, Rotation3, Similarity3,
+        SimilarityMatrix3, Translation3,
+    },
+    rand::random
 };
-use rand::random;
 
 #[test]
 fn abomonate_dmatrix() {

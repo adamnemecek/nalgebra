@@ -1,13 +1,16 @@
-use num::Zero;
-use num_complex::Complex;
+use {
+    num::Zero,
+    num_complex::Complex,
+    na::{
+        allocator::Allocator,
+        dimension::{DimDiff, DimSub, U1},
+        storage::Storage,
+        {DefaultAllocator, Matrix, MatrixN, Scalar, VectorN}
+    },
+    crate::ComplexHelper,
 
-use na::allocator::Allocator;
-use na::dimension::{DimDiff, DimSub, U1};
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixN, Scalar, VectorN};
-use crate::ComplexHelper;
-
-use lapack;
+    lapack,
+};
 
 /// The Hessenberg decomposition of a general matrix.
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]

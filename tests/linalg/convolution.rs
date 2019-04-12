@@ -1,5 +1,8 @@
-use na::{Vector2,Vector3,Vector4,Vector5,DVector};
-use std::panic;
+use {
+use {
+    na::{Vector2,Vector3,Vector4,Vector5,DVector},
+    std::panic
+};
 
 //
 // Should mimic calculations in Python's scipy library

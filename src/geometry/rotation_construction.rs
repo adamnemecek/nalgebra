@@ -1,12 +1,16 @@
-use num::{One, Zero};
+use {
+    num::{One, Zero},
 
-use alga::general::{ClosedAdd, ClosedMul};
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::DimName;
-use crate::base::{DefaultAllocator, MatrixN, Scalar};
-
-use crate::geometry::Rotation;
+    alga::general::{ClosedAdd, ClosedMul},
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::DimName,
+            DefaultAllocator, MatrixN, Scalar
+        },
+        geometry::Rotation
+    }
+};
 
 impl<N, D: DimName> Rotation<N, D>
 where

@@ -1,17 +1,23 @@
-use alga::general::{
-    AbstractGroup, AbstractLoop, AbstractMagma, AbstractMonoid, AbstractQuasigroup,
-    AbstractSemigroup, Id, Identity, TwoSidedInverse, Multiplicative, RealField,
+use {
+    alga::{
+        general::{
+            AbstractGroup, AbstractLoop, AbstractMagma, AbstractMonoid, AbstractQuasigroup,
+            AbstractSemigroup, Id, Identity, TwoSidedInverse, Multiplicative, RealField,
+        },
+        linear::{
+            AffineTransformation, DirectIsometry, Isometry, OrthogonalTransformation,
+            ProjectiveTransformation, Rotation, Similarity, Transformation,
+        }
+    },
+    crate::{
+        base::{
+            allocator::Allocator,
+            dimension::U2,
+            DefaultAllocator, Vector2
+        },
+        geometry::{Point2, UnitComplex}
+    }
 };
-use alga::linear::{
-    AffineTransformation, DirectIsometry, Isometry, OrthogonalTransformation,
-    ProjectiveTransformation, Rotation, Similarity, Transformation,
-};
-
-use crate::base::allocator::Allocator;
-use crate::base::dimension::U2;
-use crate::base::{DefaultAllocator, Vector2};
-use crate::geometry::{Point2, UnitComplex};
-
 /*
  *
  * Implementations for UnitComplex.

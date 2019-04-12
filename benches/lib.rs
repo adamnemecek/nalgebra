@@ -9,8 +9,10 @@ extern crate typenum;
 #[macro_use]
 extern crate criterion;
 
-use na::DMatrix;
-use rand::{IsaacRng, Rng};
+use {
+    na::DMatrix,
+    rand::{IsaacRng, Rng}
+};
 
 pub mod core;
 pub mod geometry;

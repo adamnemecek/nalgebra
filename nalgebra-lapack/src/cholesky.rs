@@ -1,15 +1,17 @@
+use {
+    num::Zero,
+    num_complex::Complex,
+    na::{
+        allocator::Allocator,
+        dimension::Dim,
+        storage::Storage,
+        DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar
+    },
+    lapack
+};
+
 #[cfg(feature = "serde-serialize")]
 use serde::{Deserialize, Serialize};
-
-use num::Zero;
-use num_complex::Complex;
-
-use na::allocator::Allocator;
-use na::dimension::Dim;
-use na::storage::Storage;
-use na::{DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar};
-
-use lapack;
 
 /// The cholesky decomposition of a symmetric-definite-positive matrix.
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]

@@ -1,8 +1,10 @@
 #![cfg_attr(rustfmt, rustfmt_skip)]
 
-use na::{Scalar, RealField, U2, U3, U4};
-use crate::aliases::{TMat, Qua, TVec1, TVec2, TVec3, TVec4, TMat2, TMat2x3, TMat2x4, TMat3, TMat3x2, TMat3x4,
-              TMat4, TMat4x2, TMat4x3};
+use {
+    na::{Scalar, RealField, U2, U3, U4},
+    crate::aliases::{TMat, Qua, TVec1, TVec2, TVec3, TVec4, TMat2, TMat2x3, TMat2x4, TMat3, TMat3x2, TMat3x4,
+              TMat4, TMat4x2, TMat4x3}
+};
 
 
 /// Creates a new 1D vector.

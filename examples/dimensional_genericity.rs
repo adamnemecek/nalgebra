@@ -1,14 +1,20 @@
 extern crate alga;
 extern crate nalgebra as na;
 
-use alga::linear::FiniteDimInnerSpace;
-use na::allocator::Allocator;
-use na::dimension::Dim;
-use na::{DefaultAllocator, RealField, Unit, Vector2, Vector3, VectorN};
+use {
+    alga::linear::FiniteDimInnerSpace,
+    na::{
+        allocator::Allocator,
+        dimension::Dim,
+        DefaultAllocator, RealField, Unit, Vector2, Vector3, VectorN
+    }
+};
 
 /// Reflects a vector wrt. the hyperplane with normal `plane_normal`.
 fn reflect_wrt_hyperplane_with_algebraic_genericity<V>(plane_normal: &Unit<V>, vector: &V) -> V
-where V: FiniteDimInnerSpace + Copy {
+where
+    V: FiniteDimInnerSpace + Copy,
+{
     let n = plane_normal.as_ref(); // Get the underlying vector of type `V`.
     *vector - *n * (n.dot(vector) * na::convert(2.0))
 }
@@ -29,7 +35,9 @@ where
 
 /// Reflects a 2D vector wrt. the 2D line with normal `plane_normal`.
 fn reflect_wrt_hyperplane2<N>(plane_normal: &Unit<Vector2<N>>, vector: &Vector2<N>) -> Vector2<N>
-where N: RealField {
+where
+    N: RealField,
+{
     let n = plane_normal.as_ref(); // Get the underlying Vector2
     vector - n * (n.dot(vector) * na::convert(2.0))
 }
@@ -37,7 +45,9 @@ where N: RealField {
 /// Reflects a 3D vector wrt. the 3D plane with normal `plane_normal`.
 /// /!\ This is an exact replicate of `reflect_wrt_hyperplane2, but for 3D.
 fn reflect_wrt_hyperplane3<N>(plane_normal: &Unit<Vector3<N>>, vector: &Vector3<N>) -> Vector3<N>
-where N: RealField {
+where
+    N: RealField,
+{
     let n = plane_normal.as_ref(); // Get the underlying Vector3
     vector - n * (n.dot(vector) * na::convert(2.0))
 }

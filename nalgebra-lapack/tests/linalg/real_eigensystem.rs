@@ -1,7 +1,8 @@
-use std::cmp;
-
-use na::{DMatrix, Matrix4};
-use nl::Eigen;
+use {
+    std::cmp,
+    na::{DMatrix, Matrix4},
+    nl::Eigen,
+};
 
 quickcheck!{
     fn eigensystem(n: usize) -> bool {

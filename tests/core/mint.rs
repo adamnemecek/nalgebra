@@ -1,5 +1,7 @@
-use mint;
-use na::{Matrix2, Matrix2x3, Matrix3, Matrix3x4, Matrix4, Quaternion, Vector2, Vector3, Vector4};
+use {
+    mint,
+    na::{Matrix2, Matrix2x3, Matrix3, Matrix3x4, Matrix4, Quaternion, Vector2, Vector3, Vector4}
+};
 
 macro_rules! mint_vector_conversion(
     ($($mint_vector_conversion_i: ident, $Vector: ident, $SZ: expr);* $(;)*) => {$(

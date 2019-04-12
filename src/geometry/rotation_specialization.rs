@@ -1,19 +1,23 @@
+use {
+    alga::general::RealField,
+    num::Zero,
+    rand::{Rng, distributions::{Distribution, OpenClosed01, Standard}},
+    std::ops::Neg,
+    crate::{
+        base::{
+            dimension::{U1, U2, U3},
+            storage::Storage,
+            Matrix2, Matrix3, MatrixN, Unit, Vector, Vector1, Vector3, VectorN
+        },
+        geometry::{Rotation2, Rotation3, UnitComplex, UnitQuaternion},
+    }
+};
+
 #[cfg(feature = "arbitrary")]
-use crate::base::storage::Owned;
-#[cfg(feature = "arbitrary")]
-use quickcheck::{Arbitrary, Gen};
-
-use alga::general::RealField;
-use num::Zero;
-use rand::distributions::{Distribution, OpenClosed01, Standard};
-use rand::Rng;
-use std::ops::Neg;
-
-use crate::base::dimension::{U1, U2, U3};
-use crate::base::storage::Storage;
-use crate::base::{Matrix2, Matrix3, MatrixN, Unit, Vector, Vector1, Vector3, VectorN};
-
-use crate::geometry::{Rotation2, Rotation3, UnitComplex, UnitQuaternion};
+use {
+    crate::base::storage::Owned,
+    quickcheck::{Arbitrary, Gen}
+};
 
 /*
  *

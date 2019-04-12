@@ -1,6 +1,7 @@
-use na::{RealField, U3, U4};
-
-use crate::aliases::{TVec, TMat};
+use {
+    na::{RealField, U3, U4},
+    crate::aliases::{TVec, TMat}
+}
 
 pub fn derivedEulerAngleX<N: RealField>(angleX: N, angularVelocityX: N) -> TMat4<N> {
     unimplemented!()
